@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Webpage Title</title>
     <style>
-        /* Style to create a 2x3 grid */
+        /* Style to create a 3x3 grid */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
-            grid-template-rows: repeat(3, auto); /* 3 rows with auto height */
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
@@ -41,14 +40,13 @@
     <h1>Atlas by EDG</h1>
     <p>Nominees:</p>
 
-    <!-- Grid container for 2x3 layout -->
+    <!-- Grid container for 3x3 layout -->
     <div class="grid-container">
         <!-- Each iframe is contained in a div for styling purposes -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x54c5859189f1ac11bbfa82da4e571bdd0128f9c486d6cab0719c76250335c316" allowfullscreen></iframe>
             <div class="hash-container">Hash: 0x54c5859189f1ac11bbfa82da4e571bdd0128f9c486d6cab0719c76250335c316</div>
         </div>
-        <!-- Add other iframes and their hash containers here -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x0789669d2d4d1ec194dc15be189d16e7d0a889b9c8fa8420cff9f3b1d2b0d8bb" allowfullscreen></iframe>
             <div class="hash-container">Hash: 0x0789669d2d4d1ec194dc15be189d16e7d0a889b9c8fa8420cff9f3b1d2b0d8bb</div>
@@ -89,25 +87,4 @@
         function extractHash(iframeSrc) {
             const hashStartIndex = iframeSrc.indexOf("hash=");
             if (hashStartIndex !== -1) {
-                const hashEndIndex = iframeSrc.indexOf("&", hashStartIndex);
-                if (hashEndIndex !== -1) {
-                    return iframeSrc.substring(hashStartIndex + 5, hashEndIndex);
-                } else {
-                    return iframeSrc.substring(hashStartIndex + 5);
-                }
-            }
-            return "";
-        }
-
-        // Get all iframes and display their hashes
-        const iframes = document.querySelectorAll("iframe");
-        iframes.forEach((iframe) => {
-            const hash = extractHash(iframe.src);
-            const hashContainer = document.createElement("div");
-            hashContainer.className = "hash-container";
-            hashContainer.textContent = `Hash: ${hash}`;
-            iframe.parentElement.appendChild(hashContainer);
-        });
-    </script>
-</body>
-</html>
+                const hashEndIndex = iframeSrc.indexOf("&",
