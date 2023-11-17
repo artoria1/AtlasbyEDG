@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Webpage Title</title>
+    <style>
+        /* Style to create a 2x3 grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-rows: repeat(3, auto); /* 3 rows with auto height */
+            gap: 20px;
+        }
+
+        /* Style to set the width of each iframe */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 aspect ratio for responsive iframe */
+        }
+
+        /* Style to make iframe fill its container */
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Style for displaying hashes */
+        .hash-container {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atlas by EDG</h1>
+    <p>Nominees:</p>
+
+    <!-- Grid container for 2x3 layout -->
+    <div class="grid-container">
+        <!-- Each iframe is contained in a div for styling purposes -->
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x54c5859189f1ac11bbfa82da4e571bdd0128f9c486d6cab0719c76250335c316" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0x54c5859189f1ac11bbfa82da4e571bdd0128f9c486d6cab0719c76250335c316</div>
+        </div>
+        <!-- Add other iframes and their hash containers here -->
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x0789669d2d4d1ec194dc15be189d16e7d0a889b9c8fa8420cff9f3b1d2b0d8bb" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0x0789669d2d4d1ec194dc15be189d16e7d0a889b9c8fa8420cff9f3b1d2b0d8bb</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x83250ec79d46d1cf5332ee9ef130bfca3c576bc12860e0d32130f9908af92587" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0x83250ec79d46d1cf5332ee9ef130bfca3c576bc12860e0d32130f9908af92587</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x75902b6a94ca847912bc390cf6a0ddd2fc1b731732536c7e87584d2869cc86c5" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0x75902b6a94ca847912bc390cf6a0ddd2fc1b731732536c7e87584d2869cc86c5</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xf9c7bfda72ae484b5417469213de044b29674d429a072c1b0622c17f2058cde8" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0xf9c7bfda72ae484b5417469213de044b29674d429a072c1b0622c17f2058cde8</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xd0fe726d635a5f25743ddbf1b4cb04385a6338d6615037f8c6a862ecb925a558" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0xd0fe726d635a5f25743ddbf1b4cb04385a6338d6615037f8c6a862ecb925a558</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xfb241b2b4847eda9d86d30d37c3147628342b3f1c9356909f3383db75cf4f7fa" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0xfb241b2b4847eda9d86d30d37c3147628342b3f1c9356909f3383db75cf4f7fa</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xa755231168c7ee64ed65e03fdda4b010482ae467f5c7f1ba913ab327ff9a70e2" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0xa755231168c7ee64ed65e03fdda4b010482ae467f5c7f1ba913ab327ff9a70e2</div>
+        </div>
+        <div class="iframe-container">
+            <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xa13b49485299cc1d0a337166703adaa84d16afdd7f967817d97cb12a12261002" allowfullscreen></iframe>
+            <div class="hash-container">Hash: 0xa13b49485299cc1d0a337166703adaa84d16afdd7f967817d97cb12a12261002</div>
+        </div>
+    </div>
+
+    <!-- JavaScript to extract and display hashes -->
+    <script>
+        // Function to extract hash from iframe src
+        function extractHash(iframeSrc) {
+            const hashStartIndex = iframeSrc.indexOf("hash=");
+            if (hashStartIndex !== -1) {
+                const hashEndIndex = iframeSrc.indexOf("&", hashStartIndex);
+                if (hashEndIndex !== -1) {
+                    return iframeSrc.substring(hashStartIndex + 5, hashEndIndex);
+                } else {
+                    return iframeSrc.substring(hashStartIndex + 5);
+                }
+            }
+            return "";
+        }
+
+        // Get all iframes and display their hashes
+        const iframes = document.querySelectorAll("iframe");
+        iframes.forEach((iframe) => {
+            const hash = extractHash(iframe.src);
+            const hashContainer = document.createElement("div");
+            hashContainer.className = "hash-container";
+            hashContainer.textContent = `Hash: ${hash}`;
+            iframe.parentElement.appendChild(hashContainer);
+        });
+    </script>
+</body>
+</html>
