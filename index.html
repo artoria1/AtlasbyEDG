@@ -29,16 +29,15 @@
             border: 0;
         }
 
-        /* Style for displaying numbers */
-        .number {
+        /* Style for displaying page numbers */
+        .number-container {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            font-weight: bold;
-            font-size: 18px;
+            top: 5px;
+            left: 5px;
             background-color: rgba(255, 255, 255, 0.7);
             padding: 5px;
-            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         /* Media query for smaller screens (e.g., iPhones) */
@@ -58,61 +57,43 @@
         <!-- Page 1 -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x54c5859189f1ac11bbfa82da4e571bdd0128f9c486d6cab0719c76250335c316" allowfullscreen></iframe>
-            <span class="number">1</span>
+            <div class="number-container">1</div>
         </div>
 
         <!-- Page 2 -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x83250ec79d46d1cf5332ee9ef130bfca3c576bc12860e0d32130f9908af92587" allowfullscreen></iframe>
-            <span class="number">2</span>
+            <div class="number-container">2</div>
         </div>
 
         <!-- Page 3 -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xd0fe726d635a5f25743ddbf1b4cb04385a6338d6615037f8c6a862ecb925a558" allowfullscreen></iframe>
-            <span class="number">3</span>
+            <div class="number-container">3</div>
         </div>
 
         <!-- Page 4 -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xa13b49485299cc1d0a337166703adaa84d16afdd7f967817d97cb12a12261002" allowfullscreen></iframe>
-            <span class="number">4</span>
+            <div class="number-container">4</div>
         </div>
 
         <!-- Page 5 -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0x3c9e95c57c03e9255d1b08c58255bad9e33fca93593b72b39bbcdfa0097129fe" allowfullscreen></iframe>
-            <span class="number">5</span>
+            <div class="number-container">5</div>
         </div>
 
         <!-- Page 6 -->
         <div class="iframe-container">
             <iframe src="https://mazinaw.art/Atlas/Atlas_web.html?hash=0xa755231168c7ee64ed65e03fdda4b010482ae467f5c7f1ba913ab327ff9a70e2" allowfullscreen></iframe>
-            <span class="number">6</span>
+            <div class="number-container">6</div>
         </div>
     </div>
 
-    <!-- JavaScript for double-click functionality -->
     <script>
-        // Function to handle double-click on iframe
+        // Handle double-click event for all iframes
         function handleIframeDoubleClick(iframe) {
-            // Get the iframe's source URL
-            const src = iframe.getAttribute('src');
-
-            // Check if the source URL is not null
-            if (src) {
-                // Open the source URL in a new window/tab
-                window.open(src, '_blank');
-            }
-        }
-
-        // Attach the double-click event to all iframes
-        const iframes = document.querySelectorAll('iframe');
-        iframes.forEach((iframe) => {
-            iframe.addEventListener('dblclick', () => {
-                handleIframeDoubleClick(iframe);
-            });
-        });
-    </script>
-</body>
-</html>
+            // Get the hash from the iframe's src attribute
+            const hash = iframe.getAttribute('src').match(/hash=([^&]+)/);
+            if (hash
