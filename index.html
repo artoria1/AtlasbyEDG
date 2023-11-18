@@ -39,8 +39,21 @@
             position: absolute; /* Position the hash text over the iframe */
             bottom: 0;
             left: 0;
-            right: 0;
+            width: 100%;
         }
+        
+         /* Style for numbers */
+        .number {
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 5px;
+             }
+
+        /* Media query for smaller screens (e.g., iPhones) */
+        @media screen and (max-width: 768px) {
+            .iframe-container {
+                padding-bottom: 100%; /* Full height for smaller screens */
+            }
     </style>
 </head>
 <body>
